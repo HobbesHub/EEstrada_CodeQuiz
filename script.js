@@ -241,7 +241,6 @@ function showResults() {
         highScoresListElement.innerHTML = "<b>High Scores:</b><br>" + highScoresList;
     }
 }
-
        location.reload();
 
     } else if (element.innerHTML === "Clear high Scores") {  //Clear High Score Button
@@ -270,10 +269,55 @@ function showResults() {
         if (answer === true) {
             
             //YOUR CODE
+            //answer is correct
+
+            // Update the user's score
+            userScore++; // Increment the score
+
+            // Provide feedback indicating that the answer is correct
+            result.textContent = "Correct!"; // Update your HTML to display this feedback
+
+            // Move to the next question
+            currentQuestionIndex++;
+
+            // Delay for a moment to show the feedback (you can adjust the duration)
+            setTimeout(function () {
+            // Check if there are more questions to display
+                if (currentQuestionIndex < questionList.length) {
+                // Display the next question
+                displayQuestion();
+                } else {
+                // End the quiz (e.g., call the saveResults() function)
+                saveResults();
+            }
+        }, 1000); // Delay for 1 second (1000 milliseconds) before moving to the next question or ending the quiz
 
         } else { //answer is wrong
            
             //YOUR CODE
+            // Provide feedback indicating that the answer is wrong
+            result.textContent = "Wrong!"; // Update your HTML to display this feedback
+        
+            // If you want to deduct time from the timer for a wrong answer, you can do so here
+            // For example, deduct 10 seconds (adjust as needed)
+            timeLeft -= 0;
+        
+            // Move to the next question
+            currentQuestionIndex++;
+        
+            // Delay for a moment to show the feedback (you can adjust the duration)
+            setTimeout(function () {
+                // Check if there are more questions to display
+                if (currentQuestionIndex < questionList.length) {
+                    // Display the next question
+                    displayQuestion();
+                } else {
+                    // End the quiz (e.g., call the saveResults() function)
+                    saveResults();
+                }
+        }, 1000); // Delay for 1 second (1000 milliseconds) before moving to the next question or ending the quiz
+        
+        
             
         }
 
